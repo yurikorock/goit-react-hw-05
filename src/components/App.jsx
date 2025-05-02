@@ -11,11 +11,13 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
 import MovieCast from "./MovieCast/MovieCast";
 import MovieReviews from "./MovieReviews/MovieReviews";
+import Navigation from "./Navigation/Navigation";
 
 const App = () => {
   return (
     <div>
-      <h1 className="title">Filmoteka</h1>
+      <Navigation />
+
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/movies" element={<MoviesPage />}></Route>
@@ -23,7 +25,7 @@ const App = () => {
           <Route path="cast" element={<MovieCast />}></Route>
           <Route path="reviews" element={<MovieReviews />}></Route>
         </Route>
-        <Route path="/movies" element={<NotFoundPage />}></Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>
   );
