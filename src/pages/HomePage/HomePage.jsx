@@ -1,8 +1,10 @@
+import MovieList from "../../components/MovieList/MovieList";
+
 export default function HomePage() {
   return (
     <div>
-      <h2>Популярні фільми</h2>
-      <ul>42421442</ul>
+      <h1>Trending Movies</h1>
+      <MovieList />
     </div>
   );
 }
