@@ -1,10 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getMovieDetailes } from "../../api/themoviedb";
 import { useEffect, useState } from "react";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -22,9 +24,17 @@ export default function MovieDetailsPage() {
     : "https://via.placeholder.com/500x750?text=No+Image";
   return (
     <div>
-      <button>Go back</button>
+      <button onClick={() => navigate("/")}>Go back</button>
       <div>
         <img src={posterUrl} alt={movie.title} />
+        <div>
+          <h1>{movie.title}</h1>
+          <p>Rating: {movie.vote_average.toFixed(1)}</p>
+          <h2>Overview</h2>
+          <p>{movie.overview}</p>
+          <h3>Genres</h3>
+          <p>{movie.genres.map((gen) => gen.name).join(", ")}</p>
+        </div>
       </div>
     </div>
   );
