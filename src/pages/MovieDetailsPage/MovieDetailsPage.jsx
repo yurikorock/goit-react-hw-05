@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { getMovieDetailes } from "../../api/themoviedb";
 import { useEffect, useState } from "react";
 
@@ -35,6 +35,13 @@ export default function MovieDetailsPage() {
           <h3>Genres</h3>
           <p>{movie.genres.map((gen) => gen.name).join(", ")}</p>
         </div>
+        <hr></hr>
+        <div>
+          <h3>Additional information</h3>
+          <NavLink to={"cast"}>Cast</NavLink>
+          <NavLink to={"reviews"}>Reviews</NavLink>
+        </div>
+        <hr></hr>
       </div>
     </div>
   );
