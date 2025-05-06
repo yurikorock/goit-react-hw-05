@@ -1,6 +1,7 @@
 import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { getMovieDetailes } from "../../api/themoviedb";
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -42,6 +43,7 @@ export default function MovieDetailsPage() {
           <NavLink to={"reviews"}>Reviews</NavLink>
         </div>
         <hr></hr>
+        <Outlet />
       </div>
     </div>
   );

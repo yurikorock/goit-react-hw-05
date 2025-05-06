@@ -24,3 +24,10 @@ export const getMovieDetailes = async (movieId) => {
   );
   return response.data;
 };
+export const getMovieCredits = async (movieId) => {
+  const response = await axios.get(
+    `${BASE_URL}/movie/${movieId}/credits?language=en-US`,
+    options
+  );
+  return response.data.cast;
+};
