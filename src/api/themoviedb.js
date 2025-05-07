@@ -31,3 +31,10 @@ export const getMovieCredits = async (movieId) => {
   );
   return response.data.cast;
 };
+export const getMovieReview = async (movieId) => {
+  const response = await axios.get(
+    `${BASE_URL}/movie/${movieId}/reviews?language=en-US`,
+    options
+  );
+  return response.data.results;
+};
