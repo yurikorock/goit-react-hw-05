@@ -19,7 +19,7 @@ export default function HomePage() {
   }, []);
   return (
     <div>
-      <h1>Trending Movies</h1>
+      <h1>Trending Movies Today</h1>
       {error && <p>{error}</p>}
       <MovieList movies={movies} />
     </div>

@@ -1,11 +1,13 @@
 import MovieList from "../../components/MovieList/MovieList";
 import { useState, useEffect } from "react";
 import { searchMovies } from "../../api/themoviedb";
+import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") ?? "";
 
   useEffect(() => {
     if (query === "") return;
@@ -25,9 +27,8 @@ export default function MoviesPage() {
     event.preventDefault();
     const form = event.target;
     const newQuery = form.elements.query.value.trim();
-    if (newQuery) {
-      setQuery(newQuery);
-    }
+    if (newQuery === "") return;
+    setSearchParams({ query: newQuery });
   };
   return (
     <div>

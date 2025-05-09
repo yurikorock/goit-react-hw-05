@@ -1,12 +1,14 @@
-import { useParams, useNavigate, NavLink } from "react-router-dom";
+import { useParams, useNavigate, NavLink, useLocation } from "react-router-dom";
 import { getMovieDetailes } from "../../api/themoviedb";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Outlet } from "react-router-dom";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const backLink = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -25,7 +27,7 @@ export default function MovieDetailsPage() {
     : "https://via.placeholder.com/500x750?text=No+Image";
   return (
     <div>
-      <button onClick={() => navigate("/")}>Go back</button>
+      <button onClick={() => navigate(backLink.current)}>Go back</button>
       <div>
         <img src={posterUrl} alt={movie.title} />
         <div>
