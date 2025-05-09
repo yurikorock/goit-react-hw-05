@@ -2,6 +2,7 @@ import { useParams, useNavigate, NavLink, useLocation } from "react-router-dom";
 import { getMovieDetailes } from "../../api/themoviedb";
 import { useEffect, useState, useRef } from "react";
 import { Outlet } from "react-router-dom";
+import { Suspense } from "react";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -45,7 +46,9 @@ export default function MovieDetailsPage() {
           <NavLink to={"reviews"}>Reviews</NavLink>
         </div>
         <hr></hr>
-        <Outlet />
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   );
