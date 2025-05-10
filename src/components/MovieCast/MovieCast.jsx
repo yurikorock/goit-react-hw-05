@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieCredits } from "../../api/themoviedb";
+import css from "./MovieCast.module.css";
 
 export default function MovieCast() {
   const { movieId } = useParams();
@@ -25,18 +26,18 @@ export default function MovieCast() {
   }
 
   return (
-    <div>
+    <div className={css.container}>
       {error && <p>{error}</p>}
-      <ul>
+      <ul className={css.list}>
         {cast.map((actor) => {
           const actorUrl = actor.profile_path
             ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
             : `https://dummyimage.com/200x300/cccccc/000000&text=No+Image`;
           return (
-            <li key={actor.id}>
-              <img src={actorUrl} alt={actor.name} />
-              <p>{actor.name}</p>
-              <p>Character: {actor.character}</p>
+            <li key={actor.id} className={css.item}>
+              <img src={actorUrl} alt={actor.name} className={css.image} />
+              <p className={css.name}>{actor.name}</p>
+              <p className={css.character}>Character: {actor.character}</p>
             </li>
           );
         })}

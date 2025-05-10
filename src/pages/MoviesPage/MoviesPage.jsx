@@ -2,6 +2,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import { useState, useEffect } from "react";
 import { searchMovies } from "../../api/themoviedb";
 import { useSearchParams } from "react-router-dom";
+import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -31,12 +32,14 @@ export default function MoviesPage() {
     setSearchParams({ query: newQuery });
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="query" />
-        <button type="submit">Search</button>
+    <div className={css.container}>
+      <form onSubmit={handleSubmit} className={css.form}>
+        <input type="text" name="query" className={css.input} />
+        <button type="submit" className={css.button}>
+          Search
+        </button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className={css.error}>{error}</p>}
       <MovieList movies={movies} />
     </div>
   );

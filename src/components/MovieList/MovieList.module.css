@@ -1,0 +1,31 @@
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.item {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 12px;
+    transition: transform 0.2s ease;
+    background-color: #f9f9f9;
+}
+
+.item:hover {
+    transform: scale(1.02);
+    background-color: #f0f0f0;
+}
+
+.link {
+    text-decoration: none;
+    color: #222;
+}
+
+.link h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
